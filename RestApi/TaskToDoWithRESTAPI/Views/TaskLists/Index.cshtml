@@ -1,0 +1,75 @@
+﻿@using RestApiToDoClient
+@model Dictionary<string, List<ToDoTask>>
+
+<h1>List of tasks</h1>
+<form asp-action="Search" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Title: <input type="text" name="title_search" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+<p>
+    <a asp-action="Create">Create New Custom List</a>
+</p>
+<details open>
+    <summary>Custom Lists</summary>
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Key)
+                    </td>
+                    <td>
+                        <a asp-action="AddTask" asp-route-list="@item.Key">AddTask</a> |
+                        <a asp-action="Tasks" asp-route-list="@item.Key">Tasks</a> |
+                        <a asp-action="Edit" asp-route-list="@item.Key">Edit</a> |
+                        <a asp-action="Delete" asp-route-key="@item.Key">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</details>
+<details>
+    <summary>Smart Lists</summary>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    All tasks
+                </td>
+                <td>
+                    <a asp-action="SmartTasks" asp-route-smart="all_task">Tasks</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Planned tasks
+                </td>
+                <td>
+                    <a asp-action="SmartTasks" asp-route-smart="planned_task">Tasks</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Important tasks
+                </td>
+                <td>
+                    <a asp-action="SmartTasks" asp-route-smart="important_task">Tasks</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Today tasks
+                </td>
+                <td>
+                    <a asp-action="SmartTasks" asp-route-smart="today_task">Tasks</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</details>

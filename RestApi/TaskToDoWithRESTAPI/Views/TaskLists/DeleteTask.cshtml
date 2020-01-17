@@ -1,0 +1,42 @@
+﻿@model RestApiToDoClient.ToDoTask
+
+<h3>Are you sure you want to delete Task?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Title
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Description
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            Importance
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Taskimportance)
+        </dd>
+        <dt class="col-sm-2">
+            Date
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class = "col-sm-2">
+           IsCompleted
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Isactive)
+        </dd>
+    </dl>   
+    <form asp-action="DeleteTask">
+        <input type="submit" asp-route-id="@Model.ToDoTaskId" asp-route-listid="@Model.TaskListId" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

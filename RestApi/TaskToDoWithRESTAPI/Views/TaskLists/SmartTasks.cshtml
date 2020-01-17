@@ -1,0 +1,70 @@
+﻿@model List<RestApiToDoClient.ToDoTask>
+<h1>Smart List</h1>
+<a asp-action="SmartTasks" asp-route-hide="@ViewData["HideComolet"]" asp-route-smart="@ViewData["SmartName"]">Hide Complet</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Importance
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                IsComplet
+            </th>
+            <th>
+                CreateDate
+            </th>
+            <th>
+                IsMultipleTask
+            </th>
+            <th>
+                ListName
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taskimportance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Isactive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsMultipleTask)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskListId)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+

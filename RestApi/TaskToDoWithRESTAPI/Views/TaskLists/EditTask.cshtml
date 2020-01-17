@@ -1,0 +1,48 @@
+﻿@model RestApiToDoClient.ToDoTask
+
+<h4> Edit Task</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditTask">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ToDoTaskId" />
+            <div class="form-group">
+                <p>Title</p>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p>Description</p>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p>Importance</p>
+                <select asp-for="Taskimportance">
+                    <option selected="selected" value="1">normal</option>
+                    <option value="0">low</option>
+                    <option value="2">high</option>
+                </select>
+                <span asp-validation-for="Taskimportance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p>Data</p>
+                <input asp-for="Date" class="form-control" type="date"/>
+                <span asp-validation-for="Date" class="text-danger" ></span>
+            </div>
+            <input type="text" name="listid" value="@ViewBag.ListName" hidden="hidden" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
